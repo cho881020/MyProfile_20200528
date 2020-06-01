@@ -35,7 +35,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         changeNickBtn.setOnClickListener {
+
+            var nowNickName = nickNameTxt.text.toString()
+
+            if (nowNickName == "본인닉네임표시") {
+                nowNickName = ""
+            }
+
             val myIntent = Intent(this, EditNickNameActivity::class.java)
+            myIntent.putExtra("nowNickName", nowNickName)
             startActivityForResult(myIntent, REQ_FOR_NICKNAME)
         }
     }

@@ -12,6 +12,9 @@ class EditNickNameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_nick_name)
 
+        val nick = intent.getStringExtra("nowNickName")
+        nickNameEdt.setText(nick)
+
         okBtn.setOnClickListener {
             val newNickName = nickNameEdt.text.toString()
 
