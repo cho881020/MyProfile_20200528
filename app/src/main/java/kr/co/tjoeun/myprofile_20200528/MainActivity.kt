@@ -16,6 +16,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        smsBtn.setOnClickListener {
+            val phoneNum = phoneNumEdt.text.toString()
+            val inputContent = contentEdt.text.toString()
+
+            val myUri = Uri.parse("smsto:${phoneNum}")
+            val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
+            myIntent.putExtra("sms_body", inputContent)
+            startActivity(myIntent)
+        }
+
         dialBtn.setOnClickListener {
             val phoneNum = phoneNumEdt.text.toString()
 
