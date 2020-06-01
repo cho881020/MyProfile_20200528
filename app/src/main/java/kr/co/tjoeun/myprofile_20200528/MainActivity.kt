@@ -2,6 +2,7 @@ package kr.co.tjoeun.myprofile_20200528
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -14,6 +15,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        dialBtn.setOnClickListener {
+            val phoneNum = phoneNumEdt.text.toString()
+
+            val myUri = Uri.parse("tel:${phoneNum}")
+            val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+            startActivity(myIntent)
+        }
 
         changeNickBtn.setOnClickListener {
             val myIntent = Intent(this, EditNickNameActivity::class.java)
